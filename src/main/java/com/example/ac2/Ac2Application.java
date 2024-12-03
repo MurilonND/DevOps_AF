@@ -12,10 +12,10 @@ public class Ac2Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Ac2Application.class, args);
 	}
-	
-	@RequestMapping ("/")
+
+	@RequestMapping("/")
 	@ResponseBody
-	String home(){
+	String home() {
 		return "Hello World";
 	}
 }
