@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.ac2.entity.Certificado;
 import com.example.ac2.entity.Data;
+import com.example.ac2.factory.CertificadoFactory;
 import com.example.ac2.repository.CertificadoRepository;
 
 import org.junit.jupiter.api.Test;
@@ -21,7 +22,7 @@ class CertificadoRepositoryTest {
 
     @Test
     void save_devePersistirCertificado() {
-        Certificado certificado = new Certificado(1L, new Data(LocalDate.now()));
+        Certificado certificado = CertificadoFactory.build(1L, 12L, new Data(LocalDate.now()));
         Certificado salvo = certificadoRepository.save(certificado);
 
         assertNotNull(salvo.getId());
@@ -30,7 +31,7 @@ class CertificadoRepositoryTest {
 
     @Test
     void findById_deveRetornarCertificadoCorreto() {
-        Certificado certificado = new Certificado(1L, new Data(LocalDate.now()));
+        Certificado certificado = CertificadoFactory.build(1L, 12L, new Data(LocalDate.now()));
         Certificado salvo = certificadoRepository.save(certificado);
 
         Optional<Certificado> encontrado = certificadoRepository.findById(salvo.getId());
