@@ -18,12 +18,15 @@ import com.example.ac2.service.EstudanteService;
 @CrossOrigin
 @RestController
 @RequestMapping("/estudantes")
-public class EstudanteController extends BaseController<Estudante, Long> {
-	@Autowired
-	private EstudanteService estudanteService;
-	
-	public EstudanteController(EstudanteService estudanteService) {
-        super(estudanteService);
+public class EstudanteController
+//extends BaseController<Estudante, Long> 
+{
+	private final EstudanteService estudanteService;
+
+    @Autowired
+    public EstudanteController(EstudanteService estudanteService) {
+//    	super(estudanteService);
+        this.estudanteService = estudanteService;
     }
 
     @PostMapping
