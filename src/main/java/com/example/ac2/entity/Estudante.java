@@ -1,5 +1,6 @@
 package com.example.ac2.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,13 +27,14 @@ public class Estudante {
 
     @ElementCollection
     @CollectionTable(name = "vouchers", joinColumns = @JoinColumn(name = "estudante_id"))
-    private List<Voucher> vouchers;
+    private List<Voucher> vouchers = new ArrayList<>(); // Inicialização aqui
 
     // Construtor padrão necessário para o JPA
     protected Estudante() {}
 
     public Estudante(String nome) {
         this.nome = nome;
+        this.vouchers = new ArrayList<>(); // Inicialização também no construtor
     }
 
     public Long getId() {
