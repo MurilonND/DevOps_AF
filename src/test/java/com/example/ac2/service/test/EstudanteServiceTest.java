@@ -4,6 +4,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.ac2.entity.Estudante;
+import com.example.ac2.factory.EstudanteFactory;
 import com.example.ac2.repository.EstudanteRepository;
 import com.example.ac2.service.EstudanteService;
 
@@ -30,7 +31,7 @@ class EstudanteServiceTest {
 
     @Test
     void salvarEstudante_deveSalvarENovoEstudante() {
-        Estudante estudanteMock = new Estudante("João");
+        Estudante estudanteMock = EstudanteFactory.build(2L, "João", null);
         when(estudanteRepository.save(estudanteMock)).thenReturn(estudanteMock);
 
         Estudante resultado = estudanteService.salvarEstudante(estudanteMock);
@@ -42,7 +43,7 @@ class EstudanteServiceTest {
 
     @Test
     void encontrarPorId_deveRetornarEstudanteCorreto() {
-        Estudante estudanteMock = new Estudante("João");
+        Estudante estudanteMock = EstudanteFactory.build(2L, "João", null);
         when(estudanteRepository.findById(1L)).thenReturn(Optional.of(estudanteMock));
 
         Optional<Estudante> resultado = estudanteService.encontrarPorId(1L);
@@ -54,7 +55,7 @@ class EstudanteServiceTest {
 
     @Test
     void emitirVoucherSeApto_deveEmitirVoucherQuandoNotaForSuficiente() {
-        Estudante estudanteMock = new Estudante("João");
+        Estudante estudanteMock = EstudanteFactory.build(2L, "João", null);
         when(estudanteRepository.findById(1L)).thenReturn(Optional.of(estudanteMock));
         when(estudanteRepository.save(any(Estudante.class))).thenReturn(estudanteMock);
 
@@ -65,7 +66,7 @@ class EstudanteServiceTest {
 
     @Test
     void emitirVoucherSeApto_naoDeveEmitirVoucherSeNotaInsuficiente() {
-        Estudante estudanteMock = new Estudante("João");
+        Estudante estudanteMock = EstudanteFactory.build(2L, "João", null);
         when(estudanteRepository.findById(1L)).thenReturn(Optional.of(estudanteMock));
 
         estudanteService.emitirVoucherSeApto(1L, 6.5);

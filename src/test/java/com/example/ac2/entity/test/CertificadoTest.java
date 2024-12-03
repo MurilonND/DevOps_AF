@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import com.example.ac2.entity.Certificado;
 import com.example.ac2.entity.Data;
+import com.example.ac2.factory.CertificadoFactory;
 
 import java.time.LocalDate;
 
@@ -13,9 +14,9 @@ class CertificadoTest {
 
     @Test
     void certificado_deveSerCriadoComParametrosCorretos() {
-        Long estudanteId = 1L;
+    	Long estudanteId = 4L;
         Data dataEmissao = new Data(LocalDate.of(2024, 12, 1));
-        Certificado certificado = new Certificado(estudanteId, dataEmissao);
+        Certificado certificado = CertificadoFactory.build(15L, estudanteId, dataEmissao);
 
         assertEquals(estudanteId, certificado.getEstudanteId());
         assertEquals(dataEmissao, certificado.getDataEmissao());
@@ -23,10 +24,10 @@ class CertificadoTest {
 
     @Test
     void equals_e_hashCode_devemFuncionarCorretamente() {
-        Long estudanteId = 1L;
+    	Long estudanteId = 4L;
         Data dataEmissao = new Data(LocalDate.of(2024, 12, 1));
-        Certificado certificado1 = new Certificado(estudanteId, dataEmissao);
-        Certificado certificado2 = new Certificado(estudanteId, dataEmissao);
+        Certificado certificado1 = CertificadoFactory.build(15L, estudanteId, dataEmissao);
+        Certificado certificado2 = CertificadoFactory.build(15L, estudanteId, dataEmissao);
 
         assertEquals(certificado1, certificado2);
         assertEquals(certificado1.hashCode(), certificado2.hashCode());
