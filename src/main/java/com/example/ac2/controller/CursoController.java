@@ -22,15 +22,13 @@ public class CursoController extends BaseController<Curso, Long> {
         super(cursoService);
     }
 
-    @GetMapping
+	@PostMapping("/listarCursos")
     public List<Curso> listarCursos() {
         return cursoService.listarCursos();
     }
 
-    @PostMapping
+	@PostMapping("/adicionarCurso")
     public Curso adicionarCurso(@RequestBody Curso curso) {
         return cursoService.salvarCurso(curso);
     }
-
-    // outros endpoints podem ser adicionados aqui
 }

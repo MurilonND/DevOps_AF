@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.ac2.entity.Certificado;
 import com.example.ac2.entity.Data;
+import com.example.ac2.factory.CertificadoFactory;
 import com.example.ac2.repository.CertificadoRepository;
 import com.example.ac2.service.CertificadoService;
 
@@ -31,8 +32,9 @@ class CertificadoServiceTest {
 
     @Test
     void emitirCertificado_deveSalvarENovoCertificado() {
-        Long estudanteId = 1L;
-        Certificado certificadoMock = new Certificado(estudanteId, new Data(LocalDate.now()));
+    	Long estudanteId = 4L;
+        Data dataEmissao = new Data(LocalDate.of(2024, 12, 1));
+        Certificado certificadoMock = CertificadoFactory.build(15L, estudanteId, dataEmissao);
         when(certificadoRepository.save(any(Certificado.class))).thenReturn(certificadoMock);
 
         Certificado resultado = certificadoService.emitirCertificado(estudanteId);

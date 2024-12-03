@@ -4,6 +4,7 @@ import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.ac2.entity.Curso;
+import com.example.ac2.factory.CursoFactory;
 import com.example.ac2.repository.CursoRepository;
 import com.example.ac2.service.CursoService;
 
@@ -32,7 +33,7 @@ class CursoServiceTest {
     @Test
     void listarCursos_deveRetornarTodosOsCursos() {
         List<Curso> cursosMock = new ArrayList<>();
-        cursosMock.add(new Curso("Matemática", new ArrayList<>()));
+        cursosMock.add(CursoFactory.build(5L,"Matemática", new ArrayList<>()));
         when(cursoRepository.findAll()).thenReturn(cursosMock);
 
         List<Curso> resultado = cursoService.listarCursos();
@@ -45,7 +46,7 @@ class CursoServiceTest {
 
     @Test
     void salvarCurso_deveSalvarENovoCurso() {
-        Curso cursoMock = new Curso("Matemática", new ArrayList<>());
+        Curso cursoMock = CursoFactory.build(5L,"Matemática", new ArrayList<>());
         when(cursoRepository.save(cursoMock)).thenReturn(cursoMock);
 
         Curso resultado = cursoService.salvarCurso(cursoMock);

@@ -6,12 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import com.example.ac2.entity.Estudante;
 import com.example.ac2.entity.Voucher;
+import com.example.ac2.factory.EstudanteFactory;
 
 class EstudanteTest {
 
     @Test
     void estudante_deveSerCriadoComParametrosCorretos() {
-        Estudante estudante = new Estudante("Maria");
+        Estudante estudante = EstudanteFactory.build(4L, "Maria", null);
 
         assertEquals("Maria", estudante.getNome());
         assertNotNull(estudante.getVouchers());
@@ -20,7 +21,7 @@ class EstudanteTest {
 
     @Test
     void adicionarVoucher_deveAdicionarVoucherNaLista() {
-        Estudante estudante = new Estudante("Maria");
+        Estudante estudante = EstudanteFactory.build(4L, "Maria", null);
         Voucher voucher = new Voucher("VOUCHER-001");
         estudante.adicionarVoucher(voucher);
 
