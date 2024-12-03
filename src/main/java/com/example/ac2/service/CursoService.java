@@ -9,7 +9,7 @@ import com.example.ac2.entity.Curso;
 
 
 @Service
-public class CursoService {
+public class CursoService extends BaseService<Curso, Long> {
 
     private final CursoRepository cursoRepository;
 

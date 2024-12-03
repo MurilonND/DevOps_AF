@@ -3,6 +3,7 @@ package com.example.ac2.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,15 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.ac2.entity.Estudante;
 import com.example.ac2.service.EstudanteService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/estudantes")
-public class EstudanteController {
-
-    private final EstudanteService estudanteService;
-
-    @Autowired
-    public EstudanteController(EstudanteService estudanteService) {
-        this.estudanteService = estudanteService;
+public class EstudanteController extends BaseController<Estudante, Long> {
+	@Autowired
+	private EstudanteService estudanteService;
+	
+	public EstudanteController(EstudanteService estudanteService) {
+        super(estudanteService);
     }
 
     @PostMapping

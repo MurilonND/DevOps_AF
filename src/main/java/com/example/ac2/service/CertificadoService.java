@@ -9,7 +9,7 @@ import com.example.ac2.entity.Data;
 import com.example.ac2.repository.CertificadoRepository;
 
 @Service
-public class CertificadoService {
+public class CertificadoService extends BaseService<Certificado, Long> {
 
     private final CertificadoRepository certificadoRepository;
 

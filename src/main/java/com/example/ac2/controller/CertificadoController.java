@@ -11,13 +11,12 @@ import com.example.ac2.service.CertificadoService;
 
 @RestController
 @RequestMapping("/certificados")
-public class CertificadoController {
-
-    private final CertificadoService certificadoService;
-
-    @Autowired
-    public CertificadoController(CertificadoService certificadoService) {
-        this.certificadoService = certificadoService;
+public class CertificadoController extends BaseController<Certificado, Long> {
+	@Autowired
+	private CertificadoService certificadoService;
+	
+	public CertificadoController(CertificadoService certificadoService) {
+        super(certificadoService);
     }
 
     @PostMapping("/emitir")

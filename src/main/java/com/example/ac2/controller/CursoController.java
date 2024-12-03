@@ -14,13 +14,12 @@ import com.example.ac2.service.CursoService;
 
 @RestController
 @RequestMapping("/cursos")
-public class CursoController {
-
-    private final CursoService cursoService;
-
-    @Autowired
-    public CursoController(CursoService cursoService) {
-        this.cursoService = cursoService;
+public class CursoController extends BaseController<Curso, Long> {
+	@Autowired
+	private CursoService cursoService;
+	
+	public CursoController(CursoService cursoService) {
+        super(cursoService);
     }
 
     @GetMapping
