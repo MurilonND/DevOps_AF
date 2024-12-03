@@ -7,5 +7,4 @@ import com.example.ac2.entity.Curso;
 
 @Repository
 public interface CursoRepository extends JpaRepository<Curso, Long> {
-    // métodos de consulta personalizados podem ser adicionados aqui
 }

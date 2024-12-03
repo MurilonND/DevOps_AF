@@ -24,6 +24,4 @@ public class CursoService {
     public Curso salvarCurso(Curso curso) {
         return cursoRepository.save(curso);
     }
-
-    // outros métodos de serviço podem ser adicionados aqui
 }

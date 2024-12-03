@@ -7,5 +7,4 @@ import com.example.ac2.entity.Estudante;
 
 @Repository
 public interface EstudanteRepository extends JpaRepository<Estudante, Long> {
-    // métodos de consulta personalizados podem ser adicionados aqui
 }

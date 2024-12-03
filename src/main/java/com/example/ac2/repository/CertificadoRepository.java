@@ -7,5 +7,4 @@ import com.example.ac2.entity.Certificado;
 
 @Repository
 public interface CertificadoRepository extends JpaRepository<Certificado, Long> {
-    // métodos de consulta personalizados podem ser adicionados aqui
 }
