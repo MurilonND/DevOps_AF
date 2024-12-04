@@ -8,6 +8,7 @@ COPY target/*.jar /ac2/ac2-0.0.1-SNAPSHOT.jar
 
 # Expose the port that your application will run on
 EXPOSE 8585
+EXPOSE 8686
 
 # Specify the command to run on container start
 CMD ["java", "-jar", "ac2-0.0.1-SNAPSHOT.jar"]
